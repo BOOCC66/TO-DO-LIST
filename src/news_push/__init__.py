@@ -1,0 +1,1 @@
+"""News push project package."""

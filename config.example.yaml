@@ -1,0 +1,56 @@
+app:
+  timezone: "Asia/Shanghai"
+
+rss:
+  enabled: true
+  freshness_filter:
+    enabled: true
+    max_age_days: 1
+  feeds:
+    - id: "hacker-news"
+      name: "Hacker News"
+      url: "https://hnrss.org/frontpage"
+    - id: "36kr"
+      name: "36Kr"
+      url: "https://36kr.com/feed"
+    - id: "google-news-ai"
+      name: "Google News AI"
+      url: "https://news.google.com/rss/search?q=AI&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
+
+report:
+  mode: "incremental"
+  max_news_per_keyword: 10
+
+filter:
+  method: "ai"
+  priority_sort_enabled: true
+
+ai_filter:
+  batch_size: 50
+  batch_interval: 2
+  min_score: 0.7
+  interests_file: "ai_interests.txt"
+
+notification:
+  enabled: true
+  channels:
+    wework:
+      webhook_url: ""
+      msg_type: "markdown"
+
+storage:
+  local:
+    data_dir: "data"
+
+ai:
+  model: "openai/gpt-4.1-mini"
+  api_key: ""
+  api_base: "https://api.openai.com/v1"
+  timeout: 30
+  temperature: 0.2
+  max_tokens: 2000
+
+ai_analysis:
+  enabled: true
+  language: "Chinese"
+  max_news_for_analysis: 10
